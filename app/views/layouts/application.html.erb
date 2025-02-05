@@ -15,7 +15,12 @@
   </head>
 
   <body class="bg-brand-100 font-sans">
-    <%= render 'shared/header'%>
+
+    <% if login_or_signup(request.url)%>
+      <%= render 'shared/header_devise'%>
+    <% else %>
+      <%= render 'shared/header'%>
+    <% end %>
     <main>
       <%= yield %>
     </main>
