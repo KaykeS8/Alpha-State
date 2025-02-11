@@ -15,8 +15,25 @@
             <%= image_tag 'write'%>
             <span>write</span>
           <% end %>
-          <div class="cursor-pointer">
+          <div data-controller="avatar-menu">
+          <div class="cursor-pointer relative" data-action="click->avatar-menu#toggle">
             <%= image_tag 'avatar', size: '36x36' %>
+          </div>
+
+          <!-- Dropdown Menu -->
+          <div class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg hidden z-10" data-avatar-menu-target="menu">
+            <ul class="py-2 text-gray-700 *:block *:px-4 *:py-2">
+               <li class="hover:bg-gray-100">
+                  <%= current_user.username %>
+              </li>
+              <li class="hover:bg-gray-100">
+                <%= link_to 'Profile', nil%>
+              </li>
+               <li class="hover:bg-gray-100">
+                  <%= link_to 'Logout', destroy_user_session_path, data:{turbo_method: :delete}, class: 'text-red-600' %>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       <% else %>
