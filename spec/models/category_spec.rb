@@ -1,5 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Category, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  context "validations" do 
+    it { should validate_presence_of(:kind) }
+    it { is_expected.to validate_inclusion_of(:kind).in_array(["personal development", "philosophy", "neuroscience"])}
+  end
 end
