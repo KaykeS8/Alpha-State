@@ -11,7 +11,7 @@
     <!-- Desktop Buttons -->
     <% if user_signed_in?%>
         <div class="flex items-center gap-4 font-sans">
-          <%= link_to nil, class:"flex gap-2 py-2 px-3 rounded-xl hover:bg-brand-200 cursor-pointer transition-all duration-300" do %>
+          <%= link_to new_article_path, class:"flex gap-2 py-2 px-3 rounded-xl hover:bg-brand-200 cursor-pointer transition-all duration-300" do %>
             <%= image_tag 'write'%>
             <span>write</span>
           <% end %>
