@@ -1,0 +1,17 @@
+<%= form_with model: article, url: articles_url do |form| %>
+  <div class="flex flex-col w-[30%] mb-4">
+    <%= form.label :title%>
+    <%= form.text_field :title, class: 'py-2 px-3 border border-brand-400' %>
+  </div>
+  <div class="mb-4">
+    <%= form.collection_select :category_id, Category.all, :id, :kind, prompt: true%>
+  </div>
+  <div class="mb-4">
+    <%= form.file_field :cover%>
+  </div>
+  <div class="field">
+      <%= form.label :content %>
+      <%= form.rich_text_area :content %>
+  </div>
+    <%= form.submit nil,class: 'bg-brand-400 px-4 py-2 rounded-md text-brand-100 mt-4 cursor-pointer'%>
+<% end %>
