@@ -1,0 +1,6 @@
+<div class="container">
+  <%= link_to 'Delete', @article, data: {turbo_method: :delete}, class: 'inline-block bg-red-600 text-white py-2 px-4 rounded-md hover:bg-red-800' %>
+  <h1><%= @article.title%></h1>
+  <%= image_tag(url_for(@article.cover))%>
+  <%= @article.content%>
+</div>
