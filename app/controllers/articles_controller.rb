@@ -2,7 +2,9 @@ class ArticlesController < ApplicationController
     before_action :authenticate_user!
     before_action :find_article, only: [:show, :destroy]
 
-    def show;end
+    def show
+      @comment = Comment.new
+    end
 
     def new;
       @article = Article.new
