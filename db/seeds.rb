@@ -6,3 +6,9 @@ Category.destroy_all
     Category.create!(kind: category)
 end
 puts "Category successfully"
+
+# article = Article.first 
+# Comment.destroy_all
+# 10.times do 
+#   article.comments.create!(descriptiono: Faker::Lorem.paragraph, user_id: User.first.id)
+# end
