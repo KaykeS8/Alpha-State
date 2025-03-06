@@ -4,6 +4,7 @@ class ArticlesController < ApplicationController
 
     def show
       @comment = Comment.new
+      @comments = @article.comments.recent
     end
 
     def new;
