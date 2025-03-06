@@ -28,13 +28,22 @@
 <section class="mt-14">
   <div class="max-w-[800px] mx-auto p-4 font-sans text-2xl leading-10 text-gray-600">
     <%= @article.content%>
-    <h2>Top comments(0)</h2>
+    <h2>Top comments(<%= @comments.count%>)</h2>
     <div class="mt-5">
       <div class="flex items-start gap-3">
         <%= image_tag 'avatar', size: '40x40' %>
-        <%= render "comments/form", article: @article, comment: @comment%>
+        <%= turbo_frame_tag "new_comment", class: "w-full" do %>
+          <%= render "comments/form", article: @article, comment: @comment%>
+        <% end %>
       </div>
-      <%= render "comments/comment", comments: @article.comments %>
+
+      <%= turbo_frame_tag "comments" do %>
+        <% @comments.each do |comment|%>
+          <% if comment.valid? %>
+            <%= render "comments/comment", comment: comment%>
+          <% end %>
+        <% end %>
+      <% end %>
     </div>
   </div>
 </section>
