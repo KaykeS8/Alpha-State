@@ -1,26 +1,20 @@
-<% if comments.count > 0%>
-  <% comments.each do |comment| %>
-    <%if comment.valid? %>
-    <div class="mt-5">
-      <div class="flex items-center justify-between mb-2 text-sm">
-        <div class="flex items-center gap-3">
-          <%= image_tag 'avatar', size: '40x40' %>
-          <div>
-            <span class="font-bold"><%= comment.author.username%> ●</span>
-            <span class="text-gray-500"><%= comment.created_at.strftime('%B %d, %Y')%></span>
+<%= turbo_frame_tag comment do %>
+      <div class="mt-5">
+        <div class="flex items-center justify-between mb-2 text-sm">
+          <div class="flex items-center gap-3">
+            <%= image_tag 'avatar', size: '40x40' %>
+            <div>
+              <span class="font-bold"><%= comment.author.username%> ●</span>
+              <span class="text-gray-500"><%= comment.created_at.strftime('%B %d, %Y')%></span>
+            </div>
+          </div>
+          <div class="flex gap-3">
+            <%= link_to "edit", edit_article_comment_path(comment.article.id, comment), class: 'text-blue-600'%>
+            <%= button_to "delete", article_comment_path(comment.article.id, comment), class: 'text-red-600', method: :delete%>
           </div>
         </div>
-        <div class="flex gap-3">
-          <%= link_to "edit", nil, class: 'text-blue-600'%>
-          <%= link_to "delete", article_comment_path(comment.article.id, comment), class: 'text-red-600', data: {turbo_method: :delete}%>
+        <div class="border border-gray-300 p-4 rounded-md ml-[50px] text-base text-brand-300">
+          <p><%= comment.description%></p>
         </div>
       </div>
-      <div class="border border-gray-300 p-4 rounded-md ml-[50px] text-base text-brand-300">
-        <p><%= comment.description%></p>
-      </div>
-    </div>
-    <% end%>
-  <% end %>
-<% else %>
-    <p>No comments yet</p>
 <% end %>
