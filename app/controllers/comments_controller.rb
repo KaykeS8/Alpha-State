@@ -5,13 +5,16 @@ class CommentsController < ApplicationController
   def create
     @comment = @article.comments.new(comments_params)
     @comment.user_id = current_user.id
-    if @comment.save!
+    if @comment.save
       respond_to do |format|
         format.html { redirect_to  @article, notice: "comment was successfully created." }
         format.turbo_stream
       end
     else
-      render @article, status: :unprocessable_entity
+      respond_to do |format|
+        format.html { redirect_to @article, notice: "comment was not created.", status: :unprocessable_entity }
+        format.turbo_stream { render turbo_stream: turbo_stream.replace("new_comment", partial: "comments/form", locals: { article: @article, comment: @comment }) }
+      end
     end
   end
 
