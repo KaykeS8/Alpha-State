@@ -1,18 +1,18 @@
   <%= form_with(model: [ @article, @article.comments.build ], local: true, class: 'w-full') do |form| %>
       <% if comment.errors.any? %>
       <div id="error_explanation">
-        <h2><%= pluralize(comment.errors.count, "error") %> prohibited this <%= comment.class.name.downcase %> from being saved:</h2>
+        <h2 class="text-brand-400"><%= pluralize(comment.errors.count, "error") %> prohibited this <%= comment.class.name.downcase %> from being saved:</h2>
 
-        <ul>
+        <ul class="my-3">
           <% comment.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
+            <li class="bg-brand-200 ring-1 ring-brand-200 p-3 rounded-md text-red-600 text-base"><%= message %></li>
           <% end %>
         </ul>
       </div>
     <% end %>
     
     <div class=" w-full">
-      <%= form.text_area :description, class: 'py-2 px-3 border border-gray-300 rounded-md w-full', style: 'font-size: 16px' %>
+      <%= form.text_area :description, class: "py-2 px-3 border border-gray-300 rounded-md w-full", style: 'font-size: 16px' %>
     </div>
-    <%= form.submit nil, class: 'bg-brand-400 text-brand-100 px-4 py-2 rounded-md cursor-pointer text-base' %>
+    <%= form.submit nil, class: "bg-brand-400 text-brand-100 px-4 py-2 rounded-md cursor-pointer text-base hover:ring-1 hover:ring-brand-400 transition-all duration-300" %>
   <% end %> 
