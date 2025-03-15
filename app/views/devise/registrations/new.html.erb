@@ -8,12 +8,12 @@
 
       <div class="field mb-4">
         <%= f.label :username, 'username*', class: 'text-sm text-brand-300 mb-1' %></br>
-        <%= f.text_field :username, autofocus: true, class: 'w-full py-2 px-1 rounded-md border border-brand-300 focus:bg-brand-200'%>
+        <%= f.text_field :username, autofocus: true, class: 'w-full py-2 px-4 rounded-md border border-brand-300 focus:bg-brand-200'%>
       </div>
 
       <div class="field mb-4">
         <%= f.label :email, class: "text-sm text-brand-300 mb-1" %><br />
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'w-full py-2 px-1 rounded-md border border-brand-300 focus:bg-brand-200' %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'w-full py-2 px-4 rounded-md border border-brand-300 focus:bg-brand-200' %>
       </div>
 
       <div class="field mb-4">
@@ -21,12 +21,12 @@
         <% if @minimum_password_length %>
         <em>(<%= @minimum_password_length %> characters minimum)</em>
         <% end %><br />
-        <%= f.password_field :password, autocomplete: "new-password",class: 'w-full py-2 px-1 rounded-md border border-brand-300 focus:bg-brand-200' %>
+        <%= f.password_field :password, autocomplete: "new-password",class: 'w-full py-2 px-4 rounded-md border border-brand-300 focus:bg-brand-200' %>
       </div>
 
       <div class="field mb-4">
         <%= f.label :password_confirmation, class: "text-sm text-brand-300 mb-1" %><br />
-        <%= f.password_field :password_confirmation, autocomplete: "new-password",class: 'w-full py-2 px-1 rounded-md border border-brand-300 focus:bg-brand-200' %>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password",class: 'w-full py-2 px-4 rounded-md border border-brand-300 focus:bg-brand-200' %>
       </div>
 
       <div class="actions text-center">

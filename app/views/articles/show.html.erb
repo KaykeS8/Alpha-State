@@ -1,0 +1,51 @@
+<div class="container">
+  <h1 class="mt-28 text-5xl font-serif font-bold self-start"><%= @article.title%></h1>
+
+  <div class="flex items-center justify-between mt-5">  
+    <div class="flex items-center gap-3">
+      <%= image_tag 'avatar', size: '40x40' %>
+      <div class="flex flex-col">
+        <span><%= @article.author.username%></span>
+        <span class="text-gray-500"><%= @article.created_at.strftime('%B %d, %Y')%> • 5 min read  </span>
+      </div>
+    </div>
+    <div>
+      <ul class="flex gap-2 *:bg-gray-500 *:w-6 *:h-6 *:rounded-full *:cursor-pointer">
+        <li><a href="#"></a></li>
+        <li><a href="#"></a></li>
+        <li><a href="#"></a></li>
+        <li><a href="#"></a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="flex align-center justify-center mt-20">
+  <%= image_tag(url_for(@article.cover), class: 'w-[1700px] h-[600px] object-cover rounded-md')%>
+</div>
+
+
+<section class="mt-14">
+  <div class="max-w-[800px] mx-auto p-4 font-sans text-2xl leading-10 text-gray-600">
+    <%= @article.content%>
+    <h2>Top comments(<%= @comments.count%>)</h2>
+    <div class="mt-5">
+      <div class="flex items-start gap-3">
+        <%= image_tag 'avatar', size: '40x40' %>
+        <%= turbo_frame_tag "new_comment", class: "w-full" do %>
+          <%= render "comments/form", article: @article, comment: @comment%>
+        <% end %>
+      </div>
+
+      <%= turbo_frame_tag "comments" do %>
+        <% @comments.each do |comment|%>
+          <% if comment.valid? %>
+            <%= render "comments/comment", comment: comment%>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</section>
+
+<%= link_to 'Delete', @article, data: {turbo_method: :delete}, class: 'inline-block bg-red-600 text-white py-2 px-4 rounded-md hover:bg-red-800' %>
