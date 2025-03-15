@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
   before_action :set_article, only: [:create, :destroy]
-  before_action :set_comment, only: [:edit, :update, :destroy]
+  before_action :set_comment, only: [:destroy]
 
   def create
     @comment = @article.comments.new(comments_params)
@@ -16,11 +16,6 @@ class CommentsController < ApplicationController
         format.turbo_stream { render turbo_stream: turbo_stream.replace("new_comment", partial: "comments/form", locals: { article: @article, comment: @comment }) }
       end
     end
-  end
-
-  def edit;end
-
-  def update
   end
 
   def destroy
