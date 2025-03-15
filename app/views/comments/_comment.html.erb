@@ -1,4 +1,4 @@
-<%= turbo_frame_tag comment do %>
+<%= turbo_frame_tag "comment_#{comment.id}" do %>
       <div class="mt-5">
         <div class="flex items-center justify-between mb-2 text-sm">
           <div class="flex items-center gap-3">
@@ -9,7 +9,7 @@
             </div>
           </div>
           <div class="flex gap-3">
-            <%= link_to "edit", edit_article_comment_path(comment.article.id, comment), class: "text-blue-600 cursor-pointer"%>
+            <%= link_to "edit", "", class: "text-blue-600 cursor-pointer"%>
             <%= button_to "delete", article_comment_path(comment.article.id, comment), class: "text-red-600 cursor-pointer", method: :delete%>
           </div>
         </div>
