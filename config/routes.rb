@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   resources :articles do 
     resources :comments, except: [:show, :index]
   end
+  resources :profiles, param: :user_name
 end
