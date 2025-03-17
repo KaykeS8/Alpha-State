@@ -5,4 +5,5 @@ class User < ApplicationRecord
 
   has_many :articles
   has_many :comments, dependent: :destroy
+  has_one :profile, dependent: :destroy
 end
