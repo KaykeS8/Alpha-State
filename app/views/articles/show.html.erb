@@ -5,7 +5,9 @@
     <div class="flex items-center gap-3">
       <%= image_tag 'avatar', size: '40x40' %>
       <div class="flex flex-col">
-        <span><%= @article.author.username%></span>
+        <%= link_to profile_path(@article.author.username)  do%>
+          <span><%= @article.author.username%></span>
+        <% end %>
         <span class="text-gray-500"><%= @article.created_at.strftime('%B %d, %Y')%> • 5 min read  </span>
       </div>
     </div>
