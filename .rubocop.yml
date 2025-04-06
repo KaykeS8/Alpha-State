@@ -1,0 +1,9 @@
+AllCops:
+  TargetRubyVersion: 3.0 # Ajuste para sua versão do Ruby
+  NewCops: enable
+
+Rails:
+  Enabled: true
+
+Style/Documentation:
+  Enabled: false # Desativa regras que você não quer, como essa
